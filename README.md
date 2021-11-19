@@ -41,7 +41,7 @@ from eth_sdk import eth_sdk
 sdk = eth_sdk('mainnet', signer)
 ```
 
-By inilizing the sdk it will look inside your `eth-sdk/config.yml` and initialize all the contracts in it. 
+By initializing the sdk it will look inside your `eth-sdk/config.yml` and initialize all the contracts in it. 
 
 The contracts can then be accessed as followed.
 
