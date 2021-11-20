@@ -1,5 +1,5 @@
 from eth_sdk.abi_management import networks, fetch_abis
-from eth_sdk.config import read_config, ConfigurationError
+from eth_sdk.config import read_config, read_network_config, ConfigurationError
 from web3 import Web3
 import os
 import dotsi
@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 class EthSdk:
 	def __init__(self, network, signer):
 		self.root_path = os.path.abspath(os.curdir)
-		self.config = read_config(self.root_path, network)
+		self.config = read_network_config(self.root_path, network)
 		self.addresses = dotsi.Dict(self.config['contracts'])
 
 		if 'rpc' in self.config:
@@ -61,4 +61,16 @@ def eth_sdk(network, signer):
 	sdk = EthSdk(network, signer)
 	
 	return sdk.build_contracts_sdk()
+
+
+def multi_network_eth_sdk(signer):
+	root_path = os.path.abspath(os.curdir)
+	config = read_config(root_path)
+
+	contracts = dotsi.Dict()
+	for network in config:
+		sdk = EthSdk(network, signer)
+		contracts[network] = sdk.build_contracts_sdk()
+	
+	return contracts
 

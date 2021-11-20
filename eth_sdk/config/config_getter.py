@@ -12,7 +12,7 @@ class ConfigurationNotFound(Exception):
 	pass
 
 
-def read_config(project_root: str, network: str) -> dict:
+def read_network_config(project_root: str, network: str) -> dict:
 	config_dict = None
 	for path in SDK_PATHS:
 		filename = path + 'config.yml'
@@ -36,6 +36,28 @@ def read_config(project_root: str, network: str) -> dict:
 		raise ConfigurationNotFound("A config.yml file wasn't found. Include one inside the eth-sdk folder or run eth-sdk --init on the root folder")
 	
 	return network_config
+
+
+def read_config(project_root: str) -> dict:
+	config_dict = None
+	for path in SDK_PATHS:
+		filename = path + 'config.yml'
+		config_filepath = resolve_path_from_base(
+			filename, project_root
+		)
+
+		if path_exists(config_filepath):
+			config_missing = False
+			config_dict = _load_yaml(config_filepath)
+			break
+
+		else:
+			config_missing = True
+
+	if config_missing:
+		raise ConfigurationNotFound("A config.yml file wasn't found. Include one inside the eth-sdk folder or run eth-sdk --init on the root folder")
+	
+	return config_dict
 
 
 def _load_yaml(config_filepath: str) -> dict:

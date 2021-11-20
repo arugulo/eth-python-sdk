@@ -3,6 +3,7 @@ import json
 from eth_sdk.abi_management.networks import get_api_url
 from eth_sdk.system.utils import resolve_path_from_base, path_exists, create_dir, join_paths
 from eth_sdk.system import SDK_PATHS
+import logging
 
 
 class AbiRequestError(Exception):
@@ -14,6 +15,8 @@ class InvalidApiKey(Exception):
 class InvalidAddress(Exception):
     pass
 
+class UnverifiedABI(Exception):
+    pass
 
 
 def get_abi(network_name: str, contract_address: str, api_key: str) -> dict:
@@ -38,6 +41,9 @@ def get_abi(network_name: str, contract_address: str, api_key: str) -> dict:
 
 	if result == 'Invalid Address format':
 		raise InvalidAddress(f"Address {contract_address} in config.yml is invalid")
+
+	if result == 'Contract source code not verified':
+		raise UnverifiedABI(f"Contract {contract_address} isn't verified. Cannot fetch ABI please provide it manually")
 
 	return json.loads(result)
 
