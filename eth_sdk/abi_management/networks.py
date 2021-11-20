@@ -4,6 +4,7 @@ class NetworkNotSupported(Exception):
 
 INFURA_PROJECT_URL = '4210ba8eb536423e8ae5d774c5064fa1'
 ETHERSCAN_API_KEY = 'ICZKZRP33RIZSYZJSJJ1S1ZNU64CY3KDNG'
+ARBITRUM_API_KEY = 'TEX3HHVFQIKWVBUVHR1ZN2Z2ZVP56JRM34'
 
 network_ids = {
   'MAINNET': 1,
@@ -11,8 +12,7 @@ network_ids = {
   'RINKEBY': 4,
   'GOERLI': 5,
   'KOVAN': 42,
-  # // Arbitrum
-  # ARBITRUM_ONE = 42161,
+  'ARBITRUM': 42161,
   # ARBITRUM_TESTNET = 421611,
 }
 
@@ -22,7 +22,7 @@ network_api_urls = {
   network_ids['RINKEBY']: 'https://api-rinkeby.etherscan.io/api',
   network_ids['GOERLI']: 'https://api-goerli.etherscan.io/api',
   network_ids['KOVAN']: 'https://api-kovan.etherscan.io/api',
-  # network_ids['ARBITRUM_ONE']: 'https://api.arbiscan.io/api',
+  network_ids['ARBITRUM']: 'https://api.arbiscan.io/api',
   # network_ids['ARBITRUM_TESTNET']: 'https://api-testnet.arbiscan.io/api',
 }
 
@@ -32,8 +32,8 @@ network_api_keys = {
   network_ids['RINKEBY']: ETHERSCAN_API_KEY,
   network_ids['GOERLI']: ETHERSCAN_API_KEY,
   network_ids['KOVAN']: ETHERSCAN_API_KEY,
-  # network_ids['ARBITRUM_ONE']: 'GET_KEY',
-  # network_ids['ARBITRUM_TESTNET']: 'KEY',
+  network_ids['ARBITRUM']: ARBITRUM_API_KEY,
+  # network_ids['ARBITRUM_TESTNET']: ARBITRUM_API_KEY,
 }
 
 rpc_providers = {
@@ -42,6 +42,7 @@ rpc_providers = {
   network_ids['RINKEBY']: f'https://rinkeby.infura.io/v3/{INFURA_PROJECT_URL}',
   network_ids['GOERLI']: f'https://goerli.infura.io/v3/{INFURA_PROJECT_URL}',
   network_ids['KOVAN']: f'https://kovan.infura.io/v3/{INFURA_PROJECT_URL}',
+  network_ids['ARBITRUM']: f'https://speedy-nodes-nyc.moralis.io/e1c5a8db51ab3e9318677d1d/arbitrum/mainnet'
 }
 
 
