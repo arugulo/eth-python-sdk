@@ -5,6 +5,7 @@ class NetworkNotSupported(Exception):
 INFURA_PROJECT_URL = '4210ba8eb536423e8ae5d774c5064fa1'
 ETHERSCAN_API_KEY = 'ICZKZRP33RIZSYZJSJJ1S1ZNU64CY3KDNG'
 ARBITRUM_API_KEY = 'TEX3HHVFQIKWVBUVHR1ZN2Z2ZVP56JRM34'
+AVALANCHE_API_KEY = 'GFMXK6EAYPYTFSSFUCYPWRYWU2HY4G85PZ'
 
 network_ids = {
   'MAINNET': 1,
@@ -13,6 +14,7 @@ network_ids = {
   'GOERLI': 5,
   'KOVAN': 42,
   'ARBITRUM': 42161,
+  'AVALANCHE': 43114
   # ARBITRUM_TESTNET = 421611,
 }
 
@@ -23,6 +25,7 @@ network_api_urls = {
   network_ids['GOERLI']: 'https://api-goerli.etherscan.io/api',
   network_ids['KOVAN']: 'https://api-kovan.etherscan.io/api',
   network_ids['ARBITRUM']: 'https://api.arbiscan.io/api',
+  network_ids['AVALANCHE']: 'https://api.snowtrace.io/api'
   # network_ids['ARBITRUM_TESTNET']: 'https://api-testnet.arbiscan.io/api',
 }
 
@@ -33,6 +36,7 @@ network_api_keys = {
   network_ids['GOERLI']: ETHERSCAN_API_KEY,
   network_ids['KOVAN']: ETHERSCAN_API_KEY,
   network_ids['ARBITRUM']: ARBITRUM_API_KEY,
+  network_ids['AVALANCHE']: AVALANCHE_API_KEY
   # network_ids['ARBITRUM_TESTNET']: ARBITRUM_API_KEY,
 }
 
@@ -42,7 +46,8 @@ rpc_providers = {
   network_ids['RINKEBY']: f'https://rinkeby.infura.io/v3/{INFURA_PROJECT_URL}',
   network_ids['GOERLI']: f'https://goerli.infura.io/v3/{INFURA_PROJECT_URL}',
   network_ids['KOVAN']: f'https://kovan.infura.io/v3/{INFURA_PROJECT_URL}',
-  network_ids['ARBITRUM']: f'https://speedy-nodes-nyc.moralis.io/e1c5a8db51ab3e9318677d1d/arbitrum/mainnet'
+  network_ids['ARBITRUM']: f'https://speedy-nodes-nyc.moralis.io/e1c5a8db51ab3e9318677d1d/arbitrum/mainnet',
+  network_ids['AVALANCHE']: 'https://api.avax.network/ext/bc/C/rpc'
 }
 
 
